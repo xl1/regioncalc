@@ -1,0 +1,36 @@
+<!DOCTYPE html><meta charset="utf-8" /><title>CSS Regions calculation</title><script src="regionrulepolyfill.custom.js"></script><style>.unit {
+  width: 100px;
+  height: 100px;
+}
+.unit.in {
+  height: 0;
+}
+.unit.connector {
+  height: auto;
+  max-height: 100px;
+}</style><style>input:checked +*+*+ .unit.in {
+  height: 100px;
+  background: red;
+}
+.unit.out#o1::region(div) {
+  background: blue !important;
+}
+@-webkit-region .unit.out#o1 { div {
+  background: blue !important;
+}}</style><input type="checkbox" /><input type="checkbox" /><input type="checkbox" /><div id="i1" class="unit in" style="-webkit-flow-into: i1;"></div><div id="i2" class="unit in" style="-webkit-flow-into: i2;"></div><div id="i3" class="unit in" style="-webkit-flow-into: i3;"></div><div class="and" id="a1"><div id="a1_connector1" class="unit connector" style="-webkit-flow-from: i1; -webkit-flow-into: a1;"></div><div id="a1_connector2" class="unit connector" style="-webkit-flow-from: i2; -webkit-flow-into: a1;"></div><div id="a1_inout1"><div id="a1_inout1_connector_in" class="unit connector_in" style="-webkit-flow-into: a1;"></div><div id="a1_inout1_connector_out" class="unit connector_out" style="-webkit-flow-from: a1;"></div></div><div id="a1_inout2"><div id="a1_inout2_connector_in" class="unit connector_in" style="-webkit-flow-into: a1;"></div><div id="a1_inout2_connector_out" class="unit connector_out" style="-webkit-flow-from: a1;"></div></div><div id="a1_minus" class="unit minus"></div><style>#a1_minus {
+  -webkit-flow-from: a1;
+  height: 100px;
+}</style><script></script></div><div class="or" id="r1"><div id="r1_connector1" class="unit connector" style="-webkit-flow-from: a1; -webkit-flow-into: r1;"></div><div id="r1_connector2" class="unit connector" style="-webkit-flow-from: i3; -webkit-flow-into: r1;"></div><div id="r1_inout1"><div id="r1_inout1_connector_in" class="unit connector_in" style="-webkit-flow-into: r1;"></div><div id="r1_inout1_connector_out" class="unit connector_out" style="-webkit-flow-from: r1;"></div></div><div id="r1_inout2"><div id="r1_inout2_connector_in" class="unit connector_in" style="-webkit-flow-into: r1;"></div><div id="r1_inout2_connector_out" class="unit connector_out" style="-webkit-flow-from: r1;"></div></div><div id="r1_plus1" class="unit plus" style="-webkit-flow-into: r1;"></div><div id="r1_minus" class="unit minus"></div><style>#r1_minus {
+  -webkit-flow-from: r1;
+  height: 100px;
+}#r1_minus::region(.connector_in) {
+  margin-top: -50px;
+}
+#r1_minus::region(.connector_in) {
+  margin-top: -50px;
+}</style><script>Region('#r1_minus').addRegionRule('.connector_in', {
+  marginTop: '-50px'
+});
+Region('#r1_minus').addRegionRule('.connector_in', {
+  marginTop: '-50px'
+});</script></div><div id="o1" class="unit out" style="-webkit-flow-from: r1;"></div>
