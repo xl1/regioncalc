@@ -1,0 +1,16 @@
+{
+  "name": "regioncalc",
+  "version": "0.0.0",
+  "description": "CSS Regions calculus",
+  "main": "regioncalc.js",
+  "dependencies": {
+    "coffeecup": "~0.3.21"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "testem"
+  },
+  "repository": "",
+  "author": "xl1",
+  "license": "MIT"
+}
