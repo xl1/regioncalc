@@ -19,7 +19,7 @@ m =
     div
       id:id, class:'unit connector',
       style:"-webkit-flow-from: #{in1}; -webkit-flow-into: #{flow};"
-  
+
   connector_inout: ({ id, flow }) ->
     div id:id, ->
       div
@@ -30,7 +30,8 @@ m =
         style:"-webkit-flow-from: #{flow};"
 
   plus: ({ id, flow }) ->
-    div id:id, class:'unit plus', style:"-webkit-flow-into: #{flow};"
+    div id:id, class:'unit plus', style:"-webkit-flow-into: #{flow};", ->
+      img src:'padding.svg'
 
   minus: ({ id, length, flow, coefs }) ->
     length or= 1
@@ -86,6 +87,12 @@ style """
   .unit.connector {
     height: auto;
     max-height: #{boxSize}px;
+  }
+  .unit.plus {
+    height: auto;
+  }
+  .unit.plus img {
+    vertical-align: text-bottom;
   }
 """
 
