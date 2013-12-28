@@ -1,5 +1,3 @@
-boxSize = 100
-
 unit = (name, { arity, plus, minus, coefs }) ->
   plus or= 0
   minus or= 0
@@ -15,6 +13,8 @@ unit = (name, { arity, plus, minus, coefs }) ->
       @minus id:"#{id}_minus", length:minus, flow:id, coefs:coefs
 
 m =
+  size: 100
+  unit: unit
   connector: ({ id, in1, flow }) ->
     div
       id:id, class:'unit connector',
@@ -40,13 +40,13 @@ m =
     style """
       ##{id} {
         -webkit-flow-from: #{flow};
-        height: #{length * boxSize}px;
+        height: #{length * @size}px;
       }
     """ + (
       for coef in coefs
         """
           ##{id}::region(.connector_in) {
-            margin-top: #{boxSize * (-1 + coef)}px;
+            margin-top: #{@size * (-1 + coef)}px;
           }
         """
     ).join('\n')
@@ -54,7 +54,7 @@ m =
       for coef in coefs
         """
           Region('##{id}').addRegionRule('.connector_in', {
-            marginTop: '#{boxSize * (-1 + coef)}px'
+            marginTop: '#{@size * (-1 + coef)}px'
           });
         """
     ).join('\n')
@@ -70,55 +70,23 @@ m =
   out: ({ id, in1 }) ->
     div id:id, class:'unit out', style:"-webkit-flow-from: #{in1};"
 
-# default style
-!doctype 5
-meta charset:'utf-8'
-title 'CSS Regions calculation'
-#script src:"cssregions.js"
-script src:"regionrulepolyfill.custom.js"
-style """
-  .unit {
-    width: #{boxSize}px;
-    height: #{boxSize}px;
-  }
-  .unit.in {
-    height: 0;
-  }
-  .unit.connector {
-    height: auto;
-    max-height: #{boxSize}px;
-  }
-  .unit.plus {
-    height: auto;
-  }
-  .unit.plus img {
-    vertical-align: text-bottom;
-  }
-"""
-
-
-# main
-#script """
-#  Region('.unit.out').addRegionRule('div', 'background: blue !important');
-#"""
-style '''
-  input:checked +*+*+ .unit.in {
-    height: 100px;
-    background: red;
-  }
-  .unit.out#o1::region(div) {
-    background: blue !important;
-  }
-  @-webkit-region .unit.out#o1 { div {
-    background: blue !important;
-  }}
-'''
-input type:'checkbox'
-input type:'checkbox'
-input type:'checkbox'
-m.in id:'i1'
-m.in id:'i2'
-m.in id:'i3'
-m.and id:'a1', in1:'i1', in2:'i2'
-m.or  id:'r1', in1:'a1', in2:'i3'
-m.out id:'o1', in1:'r1'
+  init: ->
+    style """
+      .unit {
+        width: #{@size}px;
+        height: #{@size}px;
+      }
+      .unit.in {
+        height: 0;
+      }
+      .unit.connector {
+        height: auto;
+        max-height: #{@size}px;
+      }
+      .unit.plus {
+        height: auto;
+      }
+      .unit.plus img {
+        vertical-align: text-bottom;
+      }
+    """
