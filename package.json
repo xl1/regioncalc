@@ -4,9 +4,10 @@
   "description": "CSS Regions calculus",
   "main": "regioncalc.js",
   "dependencies": {
-    "coffeecup": "~0.3.21"
+    "grunt": "~0.4.2",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-coffeecup": "~0.1.0"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "testem"
   },
