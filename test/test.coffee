@@ -15,6 +15,22 @@ head ->
 
   m.init()
 body ->
+  m.test 'in', formula:'i1', ->
+    m.in id:'i1'
+    m.out id:'o1', in1:'i1'
+
+  m.test 'and', formula:'i1 && i2', ->
+    m.in id:'i2'
+    m.in id:'i3'
+    m.and id:'a1', in1:'i2', in2:'i3'
+    m.out id:'o2', in1:'a1'
+
+  m.test 'or', formula:'i1 || i2', ->
+    m.in id:'i4'
+    m.in id:'i5'
+    m.or id:'r1', in1:'i4', in2:'i5'
+    m.out id:'o3', in1:'r1'
+
   coffeescript ->
     window.addEventListener 'load', ->
       for test in document.getElementsByClassName 'test'
