@@ -1,3 +1,5 @@
+padding = encodeURI 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"></svg>'
+
 unit = (name, { arity, plus, minus, coefs }) ->
   plus or= 0
   minus or= 0
@@ -31,7 +33,7 @@ m =
 
   plus: ({ id, flow }) ->
     div id:id, class:'unit plus', style:"-webkit-flow-into: #{flow};", ->
-      img src:'padding.svg'
+      img src:padding
 
   minus: ({ id, length, flow, coefs }) ->
     length or= 1
