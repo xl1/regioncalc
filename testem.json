@@ -1,0 +1,11 @@
+{
+  "before_tests": "grunt compile --file=test/test",
+  "src_files": [
+    "regioncalc.coffee",
+    "test/test.coffee"
+  ],
+  "serve_files": [
+    "regionrulepolyfill.custom.js"
+  ],
+  "test_page": "test/test.html"
+}
