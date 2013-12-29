@@ -24,6 +24,8 @@ style '''
 input type:'checkbox'
 input type:'checkbox'
 input type:'checkbox'
+
+# o1 = (i1 && i2) || i3
 m.in  id:'i1'
 m.in  id:'i2'
 m.in  id:'i3'
