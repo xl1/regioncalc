@@ -33,18 +33,17 @@ body ->
 
   coffeescript ->
     window.addEventListener 'load', ->
-      for test in document.getElementsByClassName 'test'
+      Array::forEach.call document.getElementsByClassName('test'), (test) ->
         name = test.dataset.name
+        formula = test.dataset.formula
+        func = new Function(
+          'i',
+          'return ' + formula.replace(/i(\d)+/g, (_, n) -> "(i >>> #{n - 1} & 1)")
+        )
+        mins = test.querySelectorAll '.unit.in'
+        mout = test.querySelector '.unit.out'
         describe "#{name}", ->
-          it "should return #{test.dataset.formula}", do (name=name) ->->
-            test = document.querySelector ".test[data-name='#{name}']"
-            formula = test.dataset.formula
-            func = new Function('i', 'return ' + formula.replace(
-              /i(\d)+/g,
-              (_, n) -> "(i >>> #{n - 1} & 1)"
-            ))
-            mins = test.querySelectorAll '.unit.in'
-            mout = test.querySelector '.unit.out'
+          it "should return #{formula}", ->
             for i in [0...(1 << mins.length)] by 1
               for min, j in mins
                 min.classList[if (i >>> j & 1) then 'add' else 'remove']('checked')
