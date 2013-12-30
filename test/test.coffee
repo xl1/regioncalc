@@ -31,6 +31,11 @@ body ->
     m.or id:'r1', in1:'i4', in2:'i5'
     m.out id:'o3', in1:'r1'
 
+  m.test 'not', formula:'!i1', ->
+    m.in id:'i6'
+    m.not id:'n1', in1:'i6'
+    m.out id:'o4', in1:'n1'
+
   coffeescript ->
     window.addEventListener 'load', ->
       Array::forEach.call document.getElementsByClassName('test'), (test) ->
