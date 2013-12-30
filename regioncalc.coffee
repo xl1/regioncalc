@@ -1,8 +1,8 @@
 padding = encodeURI 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"></svg>'
 
 unit = (name, { arity, plus, minus, coefs }) ->
-  plus or= 0
-  minus or= 0
+  plus ?= 0
+  minus ?= 0
   (arg) ->
     id = arg.id
     div class:name, id:id, =>
@@ -36,7 +36,7 @@ m =
       img src:padding
 
   minus: ({ id, length, flow, coefs }) ->
-    length or= 1
+    length ?= 1
     coefs or= []
     div id:id, class:'unit minus'
     style """
@@ -63,8 +63,8 @@ m =
 
   and: unit('and', arity:2, minus:1)
   or:  unit('or',  arity:2, plus:1, minus:1, coefs:[0.5, 0.5])
-  not: unit('not', arity:1, plus:1, coefs:[-1])
-  nor: unit('nor', arity:2, plus:1, coefs:[-1, -1])
+  not: unit('not', arity:1, plus:2, minus:1, coefs:[-1])
+  nor: unit('nor', arity:2, plus:2, minus:1, coefs:[-1, -1])
   dup: unit('dup', arity:1, plus:2, minus:2, coefs:[2])
 
   in: ({ id }) ->
