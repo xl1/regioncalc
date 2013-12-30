@@ -45,11 +45,12 @@ body ->
         describe "#{name}", ->
           it "should return #{formula}", ->
             for i in [0...(1 << mins.length)] by 1
-              for min, j in mins
-                min.classList[if (i >>> j & 1) then 'add' else 'remove']('checked')
-              # wait for regionrulepolyfill
               expected = if func(i) then 'fit' else 'empty'
-              waitsFor 500, ->
+              runs do (i=i, mins=mins) ->->
+                for min, j in mins
+                  min.classList[if (i >>> j & 1) then 'add' else 'remove']('checked')
+              # wait for regionrulepolyfill
+              waitsFor 500, do (mout=mout, expected=expected) ->->
                 mout.webkitRegionOverset is expected
             runs ->
               test.parentNode.removeChild(test)
