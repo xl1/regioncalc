@@ -183,7 +183,7 @@
     };
 
     RegionNode.prototype.applyStyleInRegion = function(region, elem, className) {
-      var comp, i, range;
+      var comp, frag, i, range, targetRange;
       i = 0;
       while (true) {
         range = this.getRange(region, i);
@@ -198,32 +198,27 @@
           i++;
           continue;
         }
-        elem.classList.add(className);
-        /*
-        targetRange = range.cloneRange()
-        if comp.stos < 0
-          targetRange.setStartBefore(elem)
-        targetRange.setEndAfter(elem)
-        frag = targetRange.extractContents().firstChild
-        frag.classList.add(className)
-        targetRange.insertNode(frag)
-        */
-
+        targetRange = range.cloneRange();
+        if (comp.stos < 0) {
+          targetRange.setStartBefore(elem);
+        }
+        targetRange.setEndAfter(elem);
+        frag = targetRange.extractContents().firstChild;
+        frag.classList.add(className);
+        targetRange.insertNode(frag);
         range = this.getRange(region, i);
+        if (!range) {
+          break;
+        }
         comp = this.compare(range, elem);
-        console.assert(comp.stoe >= 0);
         if (comp.etoe < 0) {
-          elem.classList.remove(className);
-          /*
-          targetRange = document.createRange()
-          targetRange.setStart(range.endContainer, range.endOffset)
-          targetRange.setEndAfter(frag)
-          frag = targetRange.extractContents().lastChild
-          console.assert frag.classList.contains className
-          frag.classList.remove className
-          targetRange.insertNode(frag)
-          */
-
+          targetRange = document.createRange();
+          targetRange.setStart(range.endContainer, range.endOffset);
+          targetRange.setEndAfter(frag);
+          frag = targetRange.extractContents().lastChild;
+          console.assert(frag.classList.contains(className));
+          frag.classList.remove(className);
+          targetRange.insertNode(frag);
         }
         i++;
       }

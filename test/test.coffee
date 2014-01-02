@@ -8,7 +8,7 @@ head ->
   script src:'/testem/jasmine.js'
   script src:'/testem.js'
   script src:'/testem/jasmine-html.js'
-  script src:'/regionrulepolyfill.custom.js'
+  script src:'/regionrulepolyfill.js'
   link rel:'stylesheet', href:'/testem/jasmine.css'
   style '.unit.in.checked { height: 100px; }'
   style '@-webkit-region .unit.out { div { background: blue; }}'

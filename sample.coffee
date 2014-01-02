@@ -2,7 +2,7 @@
 meta charset:'utf-8'
 title 'CSS Regions calculation'
 #script src:"cssregions.js"
-script src:"regionrulepolyfill.custom.js"
+script src:"regionrulepolyfill.js"
 
 m.init()
 
