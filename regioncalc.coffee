@@ -9,10 +9,14 @@ unit = (name, { arity, plus, minus, coefs }) ->
       for i in [1..arity] by 1
         @connector id:"#{id}_connector#{i}", in1:arg["in#{i}"], flow:id
       for i in [1..arity] by 1
-        @connector_inout id:"#{id}_inout#{i}", flow:id
+        @connector_in id:"#{id}_connector_in#{i}", flow:id
       for i in [1..plus] by 1
         @plus id:"#{id}_plus#{i}", flow:id
-      @minus id:"#{id}_minus", length:minus, flow:id, coefs:coefs
+      for i in [1..arity] by 1
+        @connector_out id:"#{id}_connector_out#{i}", flow:id
+      @minus
+        id:"#{id}_minus", in_id:"#{id}_connector_in",
+        length:minus, flow:id, coefs:coefs
 
 m =
   size: 100
@@ -21,21 +25,16 @@ m =
     div
       id:id, class:'unit connector',
       style:"-webkit-flow-from: #{in1}; -webkit-flow-into: #{flow};"
-
-  connector_inout: ({ id, flow }) ->
-    div id:id, ->
-      div
-        id:"#{id}_connector_in", class:'unit connector_in'
-        style:"-webkit-flow-into: #{flow};"
-      div
-        id:"#{id}_connector_out", class:'unit connector_out'
-        style:"-webkit-flow-from: #{flow};"
+  connector_in: ({ id, flow }) ->
+    div id:id, class:'unit connector_in', style:"-webkit-flow-into: #{flow};"
+  connector_out: ({ id, flow }) ->
+    div id:id, class:'unit connector_out', style:"-webkit-flow-from: #{flow};"
 
   plus: ({ id, flow }) ->
     div id:id, class:'unit plus', style:"-webkit-flow-into: #{flow};", ->
       img src:padding
 
-  minus: ({ id, length, flow, coefs }) ->
+  minus: ({ id, length, flow, coefs, in_id }) ->
     length ?= 1
     coefs or= []
     div id:id, class:'unit minus'
@@ -45,21 +44,22 @@ m =
         height: #{length * @size}px;
       }
     """ + (
-      for coef in coefs
+      for coef, i in coefs
         """
-          ##{id}::region(.connector_in) {
+          ##{id}::region(##{in_id}#{i + 1}) {
             margin-top: #{@size * (-1 + coef)}px;
           }
         """
     ).join('\n')
-    script (
-      for coef in coefs
-        """
-          Region('##{id}').addRegionRule('.connector_in', {
-            marginTop: '#{@size * (-1 + coef)}px'
-          });
-        """
-    ).join('\n')
+    if coefs.length
+      script "Region('##{id}')" + (
+        for coef, i in coefs
+          """
+            .addRegionRule('##{in_id}#{i + 1}', {
+              marginTop: '#{@size * (-1 + coef)}px'
+            })
+          """
+      ).join('') + ';'
 
   and: unit('and', arity:2, minus:1)
   or:  unit('or',  arity:2, plus:1, minus:1, coefs:[0.5, 0.5])
