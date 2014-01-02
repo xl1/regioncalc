@@ -36,6 +36,12 @@ body ->
     m.not id:'n1', in1:'i6'
     m.out id:'o4', in1:'n1'
 
+  m.test 'dup', formula:'i1', ->
+    m.in id:'i7'
+    m.dup id:'d1', in1:'i7'
+    m.not id:'n2', in1:'d1'
+    m.out id:'o5', in1:'d1'
+
   coffeescript ->
     window.addEventListener 'load', ->
       Array::forEach.call document.getElementsByClassName('test'), (test) ->
