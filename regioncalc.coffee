@@ -64,7 +64,6 @@ m =
   and: unit('and', arity:2, minus:1)
   or:  unit('or',  arity:2, plus:1, minus:1, coefs:[0.5, 0.5])
   not: unit('not', arity:1, plus:2, minus:1, coefs:[-1])
-  nor: unit('nor', arity:2, plus:2, minus:1, coefs:[-1, -1])
   dup: unit('dup', arity:1, plus:2, minus:2, coefs:[2])
 
   in: ({ id }) ->
