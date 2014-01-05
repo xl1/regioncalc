@@ -58,6 +58,7 @@ m =
           """
       ).join('') + ';'
 
+  id:  unit('id',  arity:1)
   and: unit('and', arity:2, minus:1)
   or:  unit('or',  arity:2, plus:1, minus:1, coefs:[0.5, 0.5])
   not: unit('not', arity:1, plus:2, minus:1, coefs:[-1])
