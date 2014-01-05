@@ -1,6 +1,4 @@
 unit = (name, { arity, plus, minus, coefs }) ->
-  plus ?= 0
-  minus ?= 0
   (arg) ->
     id = arg.id
     div class:name, id:id, =>
@@ -8,13 +6,14 @@ unit = (name, { arity, plus, minus, coefs }) ->
         @connector id:"#{id}_connector#{i}", in1:arg["in#{i}"], flow:id
       for i in [1..arity] by 1
         @connector_in id:"#{id}_connector_in#{i}", flow:id
-      for i in [1..plus] by 1
+      for i in [1..(plus or 0)] by 1
         @plus id:"#{id}_plus#{i}", flow:id
       for i in [1..arity] by 1
         @connector_out id:"#{id}_connector_out#{i}", flow:id
-      @minus
-        id:"#{id}_minus", in_id:"#{id}_connector_in",
-        length:minus, flow:id, coefs:coefs
+      if minus
+        @minus
+          id:"#{id}_minus", in_id:"#{id}_connector_in",
+          length:minus, flow:id, coefs:coefs
 
 m =
   size: 100
