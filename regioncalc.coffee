@@ -28,7 +28,7 @@ m =
 
   plus: ({ id, flow }) ->
     div id:id, class:'unit plus', style:"-webkit-flow-into: #{flow};", =>
-      img src:encodeURI("data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 #{@size} #{@size}\"></svg>")
+      tag 'svg', width:@size, height:@size
 
   minus: ({ id, length, flow, coefs, in_id }) ->
     length ?= 1
@@ -84,8 +84,5 @@ m =
       .unit.plus {
         height: auto;
         font-size: 0;
-      }
-      .unit.plus img {
-        vertical-align: text-bottom;
       }
     """
