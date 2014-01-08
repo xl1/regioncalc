@@ -16,7 +16,6 @@ unit = (name, { arity, plus, minus, coefs }) ->
           length:minus, flow:id, coefs:coefs
 
 m =
-  size: 100
   unit: unit
   connector: ({ id, in1, flow }) ->
     div
@@ -69,7 +68,7 @@ m =
   out: ({ id, in1 }) ->
     div id:id, class:'unit out', style:"-webkit-flow-from: #{in1};"
 
-  init: ->
+  init: (@size=100) ->
     style """
       .unit {
         width: #{@size}px;
