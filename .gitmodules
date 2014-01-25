@@ -1,3 +1,3 @@
 [submodule "regionrulepolyfill"]
 	path = regionrulepolyfill
-	url = git@github.com:xl1/regionrulepolyfill.git
+	url = http://github.com/xl1/regionrulepolyfill.git
