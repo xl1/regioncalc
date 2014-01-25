@@ -1,6 +1,8 @@
 <!DOCTYPE html><script src="../regionrulepolyfill/regionrulepolyfill.js"></script><style>.unit {
   width: 20px;
   height: 20px;
+  -webkit-region-break-inside: avoid;
+  break-inside: avoid;
 }
 .unit.in {
   height: 0;
@@ -9,48 +11,16 @@
   height: auto;
   max-height: 20px;
 }
-.unit.plus {
+.unit.connector2 {
   height: auto;
-  font-size: 0;
+  max-height: 40px;
+}
+.unit.unit2 {
+  height: 40px;
 }</style><style>div { outline: 1px solid silver; }
 :checked + .in { height: 20px; }
-@-webkit-region .out { div { background: blue !important; }}</style><input type="checkbox" /><div id="i1" class="unit in" style="-webkit-flow-into: i1;"></div><input type="checkbox" /><div id="i2" class="unit in" style="-webkit-flow-into: i2;"></div><div class="dup" id="x1_d1"><div id="x1_d1_connector1" class="unit connector" style="-webkit-flow-from: i1; -webkit-flow-into: x1_d1;"></div><div id="x1_d1_connector_in1" class="unit connector_in" style="-webkit-flow-into: x1_d1;"></div><div id="x1_d1_plus1" class="unit plus" style="-webkit-flow-into: x1_d1;"><svg width="20" height="20"></svg></div><div id="x1_d1_plus2" class="unit plus" style="-webkit-flow-into: x1_d1;"><svg width="20" height="20"></svg></div><div id="x1_d1_connector_out1" class="unit connector_out" style="-webkit-flow-from: x1_d1;"></div><div id="x1_d1_minus" class="unit minus"></div><style>#x1_d1_minus {
-  -webkit-flow-from: x1_d1;
-  height: 40px;
-}#x1_d1_minus::region(#x1_d1_connector_in1) {
-  margin-top: 20px;
-}</style><script>Region('#x1_d1_minus').addRegionRule('#x1_d1_connector_in1', {
-  marginTop: '20px'
-});</script></div><div class="dup" id="x1_d2"><div id="x1_d2_connector1" class="unit connector" style="-webkit-flow-from: i2; -webkit-flow-into: x1_d2;"></div><div id="x1_d2_connector_in1" class="unit connector_in" style="-webkit-flow-into: x1_d2;"></div><div id="x1_d2_plus1" class="unit plus" style="-webkit-flow-into: x1_d2;"><svg width="20" height="20"></svg></div><div id="x1_d2_plus2" class="unit plus" style="-webkit-flow-into: x1_d2;"><svg width="20" height="20"></svg></div><div id="x1_d2_connector_out1" class="unit connector_out" style="-webkit-flow-from: x1_d2;"></div><div id="x1_d2_minus" class="unit minus"></div><style>#x1_d2_minus {
-  -webkit-flow-from: x1_d2;
-  height: 40px;
-}#x1_d2_minus::region(#x1_d2_connector_in1) {
-  margin-top: 20px;
-}</style><script>Region('#x1_d2_minus').addRegionRule('#x1_d2_connector_in1', {
-  marginTop: '20px'
-});</script></div><div class="or" id="x1_r1"><div id="x1_r1_connector1" class="unit connector" style="-webkit-flow-from: x1_d1; -webkit-flow-into: x1_r1;"></div><div id="x1_r1_connector2" class="unit connector" style="-webkit-flow-from: x1_d2; -webkit-flow-into: x1_r1;"></div><div id="x1_r1_connector_in1" class="unit connector_in" style="-webkit-flow-into: x1_r1;"></div><div id="x1_r1_connector_in2" class="unit connector_in" style="-webkit-flow-into: x1_r1;"></div><div id="x1_r1_plus1" class="unit plus" style="-webkit-flow-into: x1_r1;"><svg width="20" height="20"></svg></div><div id="x1_r1_connector_out1" class="unit connector_out" style="-webkit-flow-from: x1_r1;"></div><div id="x1_r1_connector_out2" class="unit connector_out" style="-webkit-flow-from: x1_r1;"></div><div id="x1_r1_minus" class="unit minus"></div><style>#x1_r1_minus {
-  -webkit-flow-from: x1_r1;
-  height: 20px;
-}#x1_r1_minus::region(#x1_r1_connector_in1) {
-  margin-top: -10px;
-}
-#x1_r1_minus::region(#x1_r1_connector_in2) {
-  margin-top: -10px;
-}</style><script>Region('#x1_r1_minus').addRegionRule('#x1_r1_connector_in1', {
-  marginTop: '-10px'
-}).addRegionRule('#x1_r1_connector_in2', {
-  marginTop: '-10px'
-});</script></div><div class="and" id="x1_a1"><div id="x1_a1_connector1" class="unit connector" style="-webkit-flow-from: x1_d1; -webkit-flow-into: x1_a1;"></div><div id="x1_a1_connector2" class="unit connector" style="-webkit-flow-from: x1_d2; -webkit-flow-into: x1_a1;"></div><div id="x1_a1_connector_in1" class="unit connector_in" style="-webkit-flow-into: x1_a1;"></div><div id="x1_a1_connector_in2" class="unit connector_in" style="-webkit-flow-into: x1_a1;"></div><div id="x1_a1_connector_out1" class="unit connector_out" style="-webkit-flow-from: x1_a1;"></div><div id="x1_a1_connector_out2" class="unit connector_out" style="-webkit-flow-from: x1_a1;"></div><div id="x1_a1_minus" class="unit minus"></div><style>#x1_a1_minus {
-  -webkit-flow-from: x1_a1;
-  height: 20px;
-}</style></div><div class="not" id="x1_n1"><div id="x1_n1_connector1" class="unit connector" style="-webkit-flow-from: x1_a1; -webkit-flow-into: x1_n1;"></div><div id="x1_n1_connector_in1" class="unit connector_in" style="-webkit-flow-into: x1_n1;"></div><div id="x1_n1_plus1" class="unit plus" style="-webkit-flow-into: x1_n1;"><svg width="20" height="20"></svg></div><div id="x1_n1_plus2" class="unit plus" style="-webkit-flow-into: x1_n1;"><svg width="20" height="20"></svg></div><div id="x1_n1_connector_out1" class="unit connector_out" style="-webkit-flow-from: x1_n1;"></div><div id="x1_n1_minus" class="unit minus"></div><style>#x1_n1_minus {
-  -webkit-flow-from: x1_n1;
-  height: 20px;
-}#x1_n1_minus::region(#x1_n1_connector_in1) {
-  margin-top: -40px;
-}</style><script>Region('#x1_n1_minus').addRegionRule('#x1_n1_connector_in1', {
-  marginTop: '-40px'
-});</script></div><div class="and" id="x1"><div id="x1_connector1" class="unit connector" style="-webkit-flow-from: x1_r1; -webkit-flow-into: x1;"></div><div id="x1_connector2" class="unit connector" style="-webkit-flow-from: x1_n1; -webkit-flow-into: x1;"></div><div id="x1_connector_in1" class="unit connector_in" style="-webkit-flow-into: x1;"></div><div id="x1_connector_in2" class="unit connector_in" style="-webkit-flow-into: x1;"></div><div id="x1_connector_out1" class="unit connector_out" style="-webkit-flow-from: x1;"></div><div id="x1_connector_out2" class="unit connector_out" style="-webkit-flow-from: x1;"></div><div id="x1_minus" class="unit minus"></div><style>#x1_minus {
-  -webkit-flow-from: x1;
-  height: 20px;
-}</style></div><div id="o1" class="unit out" style="-webkit-flow-from: x1;"></div>
+@-webkit-region .out { div { background: blue !important; }}</style><input type="checkbox" /><div class="unit in" style="-webkit-flow-into:i1; flow-into:i1; " id="i1"></div><input type="checkbox" /><div class="unit in" style="-webkit-flow-into:i2; flow-into:i2; " id="i2"></div><div class="dup"><div class="unit connector" style="-webkit-flow-from:i1; flow-from:i1; -webkit-flow-into:x1_d1_x2; flow-into:x1_d1_x2; "></div><div class="unit unit2" style="-webkit-flow-into:x1_d1_x2; flow-into:x1_d1_x2; "></div><div class="unit unit2" style="-webkit-flow-from:x1_d1_x2; flow-from:x1_d1_x2; "></div><div class="unit connector2" style="-webkit-flow-from:x1_d1_x2; flow-from:x1_d1_x2; -webkit-flow-into:x1_d1; flow-into:x1_d1; "></div><div class="unit" style="-webkit-flow-into:x1_d1; flow-into:x1_d1; "></div><div class="unit" style="-webkit-flow-into:x1_d1; flow-into:x1_d1; "></div><div class="unit unit2" style="-webkit-flow-from:x1_d1; flow-from:x1_d1; "></div></div><div class="dup"><div class="unit connector" style="-webkit-flow-from:i2; flow-from:i2; -webkit-flow-into:x1_d2_x2; flow-into:x1_d2_x2; "></div><div class="unit unit2" style="-webkit-flow-into:x1_d2_x2; flow-into:x1_d2_x2; "></div><div class="unit unit2" style="-webkit-flow-from:x1_d2_x2; flow-from:x1_d2_x2; "></div><div class="unit connector2" style="-webkit-flow-from:x1_d2_x2; flow-from:x1_d2_x2; -webkit-flow-into:x1_d2; flow-into:x1_d2; "></div><div class="unit" style="-webkit-flow-into:x1_d2; flow-into:x1_d2; "></div><div class="unit" style="-webkit-flow-into:x1_d2; flow-into:x1_d2; "></div><div class="unit unit2" style="-webkit-flow-from:x1_d2; flow-from:x1_d2; "></div></div><div class="or"><div class="orand"><div class="unit connector" style="-webkit-flow-from:x1_d1; flow-from:x1_d1; -webkit-flow-into:x1_r1_orand; flow-into:x1_r1_orand; "></div><div class="unit connector" style="-webkit-flow-from:x1_d2; flow-from:x1_d2; -webkit-flow-into:x1_r1_orand; flow-into:x1_r1_orand; "></div></div><div class="unit connector" style="-webkit-flow-from:x1_r1_orand; flow-from:x1_r1_orand; -webkit-flow-into:x1_r1; flow-into:x1_r1; "></div><div class="unit" style="-webkit-flow-into:x1_r1; flow-into:x1_r1; "></div><div class="unit" style="-webkit-flow-from:x1_r1; flow-from:x1_r1; "></div></div><div class="and"><div class="orand"><div class="unit connector" style="-webkit-flow-from:x1_d1; flow-from:x1_d1; -webkit-flow-into:x1_a1; flow-into:x1_a1; "></div><div class="unit connector" style="-webkit-flow-from:x1_d2; flow-from:x1_d2; -webkit-flow-into:x1_a1; flow-into:x1_a1; "></div></div><div class="unit" style="-webkit-flow-from:x1_a1; flow-from:x1_a1; "></div></div><div class="not"><div class="unit connector" style="-webkit-flow-from:x1_a1; flow-from:x1_a1; -webkit-flow-into:x1_n1; flow-into:x1_n1; "></div><div class="unit plus" style="-webkit-flow-into:x1_n1; flow-into:x1_n1; " id="x1_n1_plus"></div><div class="unit" style="-webkit-flow-into:x1_n1; flow-into:x1_n1; "></div><div class="unit" style="-webkit-flow-into:x1_n1; flow-into:x1_n1; "></div><div class="unit" style="-webkit-flow-from:x1_n1; flow-from:x1_n1; "></div><div class="unit minus" style="-webkit-flow-from:x1_n1; flow-from:x1_n1; " id="x1_n1_minus"></div><style>#x1_n1_minus::region(#x1_n1_plus) {
+  margin-top: -60px;
+}</style><script>Region('#x1_n1_minus').addRegionRule('#x1_n1_plus', {
+  marginTop: '-60px'
+});</script></div><div class="and"><div class="orand"><div class="unit connector" style="-webkit-flow-from:x1_r1; flow-from:x1_r1; -webkit-flow-into:x1; flow-into:x1; "></div><div class="unit connector" style="-webkit-flow-from:x1_n1; flow-from:x1_n1; -webkit-flow-into:x1; flow-into:x1; "></div></div><div class="unit" style="-webkit-flow-from:x1; flow-from:x1; "></div></div><div class="unit out" style="-webkit-flow-from:x1; flow-from:x1; " id="o1"></div>
