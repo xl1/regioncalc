@@ -1,9 +1,7 @@
 m.halfadder = ({ id, in1, in2 }) ->
-  m.dup id:"#{id}_d1", in1:in1
-  m.dup id:"#{id}_d2", in1:in2
-  m.or  id:"#{id}_r1", in1:"#{id}_d1", in2:"#{id}_d2"
-  m.and id:"#{id}_a1", in1:"#{id}_d1", in2:"#{id}_d2"
-  m.dup id:"#{id}_carry", in1:"#{id}_a1"
+  m.orand id:"#{id}_oa", in1:in1, in2:in2
+  m.unit id:"#{id}_r1", class:'connector', from:"#{id}_oa", into:"#{id}_r1"
+  m.dup id:"#{id}_carry", in1:"#{id}_oa"
   m.not id:"#{id}_n1", in1:"#{id}_carry"
   m.and id:id, in1:"#{id}_r1", in2:"#{id}_n1"
 
@@ -21,6 +19,7 @@ script src:'../regionrulepolyfill/regionrulepolyfill.js'
 m.init 16
 
 style """
+input { display: block; }
 div { outline: silver 1px solid; }
 .container { float: left; }
 input:checked + .unit.in { height: #{m.size}px; }
@@ -31,7 +30,7 @@ input:checked + .unit.in { height: #{m.size}px; }
 }
 """
 
-for i in [0...8]
+for i in [0...12]
   div class:'container', ->
     input type:'checkbox'
     m.in id:"i#{i}"
