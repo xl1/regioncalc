@@ -22,8 +22,7 @@ m =
     div class:'or', =>
       @orand id:"#{id}_orand", in1:in1, in2:in2
       unit class:'connector', from:"#{id}_orand", into:id
-      unit into:id
-      unit from:id
+      unit from:"#{id}_orand"
   and: ({ id, in1, in2 }) ->
     div class:'and', =>
       @orand id:id, in1:in1, in2:in2
