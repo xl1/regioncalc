@@ -11,19 +11,17 @@
   height: auto;
   max-height: 100px;
 }
-.unit.connector2 {
-  height: auto;
-  max-height: 200px;
-}
 .unit.unit2 {
   height: 200px;
-}</style><style>input:checked +*+*+ .unit.in {
+}</style><style>.unit {
+  outline: 1px solid silver;
+}
+input:checked +*+*+ .unit.in {
   height: 100px;
-  background: red;
 }
 .unit.out#o1::region(div) {
   background: blue !important;
 }
 @-webkit-region .unit.out#o1 { div {
   background: blue !important;
-}}</style><input type="checkbox" /><input type="checkbox" /><input type="checkbox" /><div class="unit in" style="-webkit-flow-into:i1; flow-into:i1; " id="i1"></div><div class="unit in" style="-webkit-flow-into:i2; flow-into:i2; " id="i2"></div><div class="unit in" style="-webkit-flow-into:i3; flow-into:i3; " id="i3"></div><div class="and"><div class="orand"><div class="unit connector" style="-webkit-flow-from:i1; flow-from:i1; -webkit-flow-into:a1; flow-into:a1; "></div><div class="unit connector" style="-webkit-flow-from:i2; flow-from:i2; -webkit-flow-into:a1; flow-into:a1; "></div></div><div class="unit" style="-webkit-flow-from:a1; flow-from:a1; "></div></div><div class="or"><div class="orand"><div class="unit connector" style="-webkit-flow-from:a1; flow-from:a1; -webkit-flow-into:r1_orand; flow-into:r1_orand; "></div><div class="unit connector" style="-webkit-flow-from:i3; flow-from:i3; -webkit-flow-into:r1_orand; flow-into:r1_orand; "></div></div><div class="unit connector" style="-webkit-flow-from:r1_orand; flow-from:r1_orand; -webkit-flow-into:r1; flow-into:r1; "></div><div class="unit" style="-webkit-flow-into:r1; flow-into:r1; "></div><div class="unit" style="-webkit-flow-from:r1; flow-from:r1; "></div></div><div class="unit out" style="-webkit-flow-from:r1; flow-from:r1; " id="o1"></div>
+}}</style><input type="checkbox" /><input type="checkbox" /><input type="checkbox" /><div class="unit in" style="-webkit-flow-into:i1; flow-into:i1; " id="i1"></div><div class="unit in" style="-webkit-flow-into:i2; flow-into:i2; " id="i2"></div><div class="unit in" style="-webkit-flow-into:i3; flow-into:i3; " id="i3"></div><div class="and"><div class="orand"><div class="unit connector" style="-webkit-flow-from:i1; flow-from:i1; -webkit-flow-into:a1; flow-into:a1; "></div><div class="unit connector" style="-webkit-flow-from:i2; flow-from:i2; -webkit-flow-into:a1; flow-into:a1; "></div></div><div class="unit" style="-webkit-flow-from:a1; flow-from:a1; "></div></div><div class="or"><div class="orand"><div class="unit connector" style="-webkit-flow-from:a1; flow-from:a1; -webkit-flow-into:r1_orand; flow-into:r1_orand; "></div><div class="unit connector" style="-webkit-flow-from:i3; flow-from:i3; -webkit-flow-into:r1_orand; flow-into:r1_orand; "></div></div><div class="unit connector" style="-webkit-flow-from:r1_orand; flow-from:r1_orand; -webkit-flow-into:r1; flow-into:r1; "></div><div class="unit" style="-webkit-flow-from:r1_orand; flow-from:r1_orand; "></div></div><div class="unit out" style="-webkit-flow-from:r1; flow-from:r1; " id="o1"></div>

@@ -22,8 +22,7 @@ m =
     div class:'or', =>
       @orand id:"#{id}_orand", in1:in1, in2:in2
       unit class:'connector', from:"#{id}_orand", into:id
-      unit into:id
-      unit from:id
+      unit from:"#{id}_orand"
   and: ({ id, in1, in2 }) ->
     div class:'and', =>
       @orand id:id, in1:in1, in2:in2
@@ -39,23 +38,22 @@ m =
       unit class:'minus', id:"#{id}_minus", from:id
       style """
         ##{id}_minus::region(##{id}_plus) {
-          margin-top: #{-3 * @size}px;
+          margin-top: #{-2 * @size}px;
         }
       """
       script """
         Region('##{id}_minus').addRegionRule('##{id}_plus', {
-          marginTop: '#{-3 * @size}px'
+          marginTop: '#{-2 * @size}px'
         });
       """
 
   dup: ({ id, in1 }) ->
     div class:'dup', =>
-      unit class:'connector', from:in1, into:"#{id}_x2"
-      unit class:'unit2', into:"#{id}_x2"
-      unit class:'unit2', from:"#{id}_x2"
-      unit class:'connector2', from:"#{id}_x2", into:id
+      unit class:'connector', from:in1, into:id
+      unit class:'unit2', into:id
       unit into:id
       unit into:id
+      unit class:'unit2', from:id
       unit class:'unit2', from:id
 
   in: ({ id }) ->
@@ -77,10 +75,6 @@ m =
       .unit.connector {
         height: auto;
         max-height: #{@size}px;
-      }
-      .unit.connector2 {
-        height: auto;
-        max-height: #{2 * @size}px;
       }
       .unit.unit2 {
         height: #{2 * @size}px;
