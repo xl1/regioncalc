@@ -38,12 +38,12 @@ m =
       unit class:'minus', id:"#{id}_minus", from:id
       style """
         ##{id}_minus::region(##{id}_plus) {
-          margin-top: #{-3 * @size}px;
+          margin-top: #{-2 * @size}px;
         }
       """
       script """
         Region('##{id}_minus').addRegionRule('##{id}_plus', {
-          marginTop: '#{-3 * @size}px'
+          marginTop: '#{-2 * @size}px'
         });
       """
 
