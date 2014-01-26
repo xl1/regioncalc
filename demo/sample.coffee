@@ -10,9 +10,11 @@ m.init()
 #  Region('.unit.out').addRegionRule('div', 'background: blue !important');
 #"""
 style '''
+  .unit {
+    outline: 1px solid silver;
+  }
   input:checked +*+*+ .unit.in {
     height: 100px;
-    background: red;
   }
   .unit.out#o1::region(div) {
     background: blue !important;
